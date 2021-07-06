@@ -15,6 +15,6 @@ pyenv global 3.7.4
 pyenv versions
 python --version
 pip install --upgrade pip
-pip install -r requirements_dev.txt
+pip install -r $HOME/requirements_dev.txt
 pyenv rehash
 PYTHONPATH=. python -m pytest -v -s --cache-clear --cov=pyenv-win tests
