@@ -10,7 +10,9 @@ jobs:
       PYENV_HOME: D:\a\.pyenv\pyenv-win
     steps:
       - name: create working-directory
-        run: set -x; mkdir -p "$PYENV_PARENT"; echo $PWD
+        run: |
+            echo $PYENV_PARENT
+            echo $PYENV
       - name: checkout
         uses: actions/checkout@v2
         with:
