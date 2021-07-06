@@ -37,4 +37,4 @@ jobs:
             ${{ env.PYENV }}\bin\pyenv.bat rehash
       - name: pytest
         run: |
-            PYTHONPATH=${{ env.PYENV }} ${{ env.PYENV }}\bin\python -m pytest -v -s tests
+            ${{ env.PYENV }}\bin\python -m pytest -v -s tests
