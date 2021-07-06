@@ -17,4 +17,4 @@ python --version
 pip install --user --upgrade pip
 pip install -r $HOME/requirements_dev.txt
 pyenv rehash
-PYTHONPATH=. python -m pytest -v -s --cache-clear --cov=pyenv-win tests
+PYTHONPATH=. python -m pytest -v -s --cache-clear --cov=pyenv-win $HOME/tests
