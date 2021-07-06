@@ -5,16 +5,15 @@ jobs:
     name: Hello world action
     runs-on: windows-latest
     env:
-      PYENV_PARENT: D:\a\.pyenv
+      HOME: ..\..\
+      PYENV_PARENT: .pyenv
       PYENV : D:\a\.pyenv\pyenv-win
       PYENV_HOME: D:\a\.pyenv\pyenv-win
     steps:
       - name: create working-directory
         run: |
-            echo $PYENV_PARENT
-            echo $PYENV
-      - name: checkout
-        uses: actions/checkout@v2
-        with:
-          path: "$PYENV_PARENT"
+            cd $HOME
+            mkdir -p $PYENV_PARENT
+            git clone https://github.com/pyenv-win/pyenv-win.git
+            dir
 
