@@ -37,4 +37,5 @@ jobs:
             ${{ env.PYENV }}\bin\pyenv.bat rehash
       - name: pytest
         run: |
-            ${{ env.PYENV }}\shims\python -m pytest -v -s tests
+            ${{ env.PYENV }}\shims\python -m pytest -v -s --cache-clear --cov=app test > pytest-coverage.txt
+            more pytest-coverage.txt
