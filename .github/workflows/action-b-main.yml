@@ -5,13 +5,35 @@ jobs:
     name: Hello world action
     runs-on: windows-latest
     env:
-      HOME: ..\..\
+      HOME: D:\a\.pyenv
+      PYENV: D:\a\.pyenv\pyenv-win
+      PYENV_HOME: D:\a\.pyenv\pyenv-win
     steps:
       - name: create working-directory
         run: |
-            cd $HOME
-            pwd
-            mkdir -p .pyenv
-            git clone https://github.com/pyenv-win/pyenv-win.git
-            dir
-
+            mkdir -p '${{ env.HOME }}'
+      - name: checkout
+        run: |
+            git clone https://github.com/pyenv-win/pyenv-win.git '${{ env.HOME }}'
+#         uses: actions/checkout@v2
+#         with:
+#           path: ..\..\.pyenv
+      - name: pyenv update, install
+        run: | 
+            '${{ env.HOME }}'/bin/pyenv.bat --version
+            '${{ env.HOME }}'/bin/pyenv.bat update
+            '${{ env.HOME }}'/bin/pyenv.bat install 3.7.4
+            
+      - name: pyenv set global
+        run: |
+            '${{ env.HOME }}'/bin/pyenv.bat global 3.7.4
+            '${{ env.HOME }}'/bin/pyenv.bat versions
+            '${{ env.HOME }}'/bin/python --version
+            
+      - name: pytest pre-req
+        run: |
+            '${{ env.HOME }}'/bin/pip install -r requirements_dev.txt
+            '${{ env.HOME }}'/bin/pyenv rehash
+      - name: pytest
+        run: |
+            PYTHONPATH=. '${{ env.HOME }}'/bin/python -m pytest -v -s tests
