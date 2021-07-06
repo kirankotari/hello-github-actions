@@ -1,0 +1,11 @@
+name: windows-docker
+on: push
+jobs:
+  build:
+    name: Hello world action
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: ./action-b
+        with:
+          MY_NAME: "Mona"
