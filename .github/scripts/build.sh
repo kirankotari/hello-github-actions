@@ -4,6 +4,7 @@ export PYENV="$HOME/pyenv-win"
 export PATH="$PYENV/bin:$PYENV/shims:$PATH"
 
 echo $PATH
+pyenv --version
 
 # git clone https://github.com/pyenv-win/pyenv-win.git $HOME
 # $PYENV/bin/pyenv --version
