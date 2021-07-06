@@ -4,17 +4,15 @@ jobs:
   build:
     name: Hello world action
     runs-on: windows-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: &workdir 'D:\a\.pyenv\'
+    env:
+      PYENV_PARENT: D:\a\.pyenv
+      PYENV : D:\a\.pyenv\pyenv-win
+      PYENV_HOME: D:\a\.pyenv\pyenv-win
     steps:
       - name: create working-directory
-        run: set -x; mkdir -p "$workdir"; echo $PWD
-        working-directory: 'C:\'
-        env: { workdir: *workdir }
+        run: set -x; mkdir -p "$PYENV_PARENT"; echo $PWD
       - name: checkout
         uses: actions/checkout@v2
         with:
-          path: *workdir 
-        
+          path: "$PYENV_PARENT"
+
