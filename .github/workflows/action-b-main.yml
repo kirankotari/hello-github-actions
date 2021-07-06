@@ -6,14 +6,12 @@ jobs:
     runs-on: windows-latest
     env:
       HOME: ..\..\
-      PYENV_PARENT: .pyenv
-      PYENV : D:\a\.pyenv\pyenv-win
-      PYENV_HOME: D:\a\.pyenv\pyenv-win
     steps:
       - name: create working-directory
         run: |
             cd $HOME
-            mkdir -p $PYENV_PARENT
+            pwd
+            mkdir -p .pyenv
             git clone https://github.com/pyenv-win/pyenv-win.git
             dir
 
