@@ -20,20 +20,21 @@ jobs:
 #           path: ..\..\.pyenv
       - name: pyenv update, install
         run: | 
+            ${{ env.HOME }}\bin\pyenv.bat --version
             ${{ env.HOME }}\bin\pyenv.bat update
-            '${{ env.HOME }}\bin\pyenv.bat' install 3.7.4
-#            '${{ env.HOME }}\bin\pyenv.bat' --version
+            ${{ env.HOME }}\bin\pyenv.bat install 3.7.4
+            
             
       - name: pyenv set global
         run: |
-            '${{ env.HOME }}\bin\pyenv.bat' global 3.7.4
-            '${{ env.HOME }}\bin\pyenv.bat' versions
-            '${{ env.HOME }}\bin\python' --version
+            ${{ env.HOME }}\bin\pyenv.bat global 3.7.4
+            ${{ env.HOME }}\bin\pyenv.bat versions
+            ${{ env.HOME }}\shims\python --version
             
       - name: pytest pre-req
         run: |
-            '${{ env.HOME }}\bin\pip' install -r requirements_dev.txt
-            '${{ env.HOME }}\bin\pyenv' rehash
+            ${{ env.HOME }}\shims\pip install -r requirements_dev.txt
+            ${{ env.HOME }}\bin\pyenv.bat rehash
       - name: pytest
         run: |
-            PYTHONPATH=. '${{ env.HOME }}\bin\python' -m pytest -v -s tests
+            PYTHONPATH=. ${{ env.HOME }}\bin\python -m pytest -v -s tests
