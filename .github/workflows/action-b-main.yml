@@ -9,6 +9,8 @@ jobs:
       PYENV: D:\a\.pyenv\pyenv-win
       PYENV_HOME: D:\a\.pyenv\pyenv-win
     steps:
+      - name: checkout
+        uses: actions/checkout@v2
       - name: shell script test
         run: ./.github/scripts/build.sh
         shell: bash
