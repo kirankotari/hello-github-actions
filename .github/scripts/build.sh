@@ -1,12 +1,16 @@
-export HOME="D:/a/.pyenv"
+export HOME="/d/a/.pyenv"
 mkdir -p $HOME
+
+git clone https://github.com/pyenv-win/pyenv-win.git $HOME
+
 export PYENV="$HOME/pyenv-win"
 export PATH="$PYENV/bin:$PYENV/shims:$PATH"
+
 
 echo $PATH
 pyenv --version
 
-# git clone https://github.com/pyenv-win/pyenv-win.git $HOME
+
 # $PYENV/bin/pyenv --version
 # $PYENV/bin/pyenv update
 # $PYENV/bin/pyenv install -q 3.7.4
