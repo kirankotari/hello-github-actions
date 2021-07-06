@@ -10,38 +10,31 @@ jobs:
       PYENV_HOME: D:\a\.pyenv\pyenv-win
     steps:
       - name: create working-directory
-        shell: bash
         run: |
             mkdir -p '${{ env.HOME }}'
       - name: checkout
-        shell: bash
         run: |
             git clone https://github.com/pyenv-win/pyenv-win.git '${{ env.HOME }}'
 #         uses: actions/checkout@v2
 #         with:
 #           path: ..\..\.pyenv
       - name: pyenv update, install
-        shell: bash
         run: | 
             ${{ env.PYENV }}\bin\pyenv.bat --version
             ${{ env.PYENV }}\bin\pyenv.bat update
             ${{ env.PYENV }}\bin\pyenv.bat install 3.7.4
             
-            
       - name: pyenv set global
-        shell: bash
         run: |
             ${{ env.PYENV }}\bin\pyenv.bat global 3.7.4
             ${{ env.PYENV }}\bin\pyenv.bat versions
             ${{ env.PYENV }}\shims\python --version
             
       - name: pytest pre-req
-        shell: bash
         run: |
             ${{ env.PYENV }}\shims\pip install -r requirements_dev.txt
             ${{ env.PYENV }}\bin\pyenv.bat rehash
       - name: pytest
-        shell: bash
         run: |
             ${{ env.PYENV }}\shims\python -m pytest -v -s --cache-clear --cov=app test > .\pytest-coverage.txt
             more .\pytest-coverage.txt
