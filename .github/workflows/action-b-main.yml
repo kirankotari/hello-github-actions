@@ -3,9 +3,13 @@ on: push
 jobs:
   build:
     name: Hello world action
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: ./action-b
-        with:
-          MY_NAME: "Mona"
+      - name: checking pwd
+        shell: cmd
+        run: echo $PWD
+      - uses: actions/checkout@v2
+      - name: checking pwd again
+        shell: cmd
+        run: echo $PWD
+        
