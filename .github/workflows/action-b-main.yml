@@ -4,12 +4,17 @@ jobs:
   build:
     name: Hello world action
     runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: &workdir 'D:\a\.pyenv\'
     steps:
-      - name: checking pwd
-        shell: cmd
-        run: echo $PWD
-      - uses: actions/checkout@v2
-      - name: checking pwd again
-        shell: cmd
-        run: echo $PWD
+      - name: create working-directory
+        run: set -x; mkdir -p "$workdir"; echo $PWD
+        working-directory: 'C:\'
+        env: { workdir: *workdir }
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          path: *workdir 
         
