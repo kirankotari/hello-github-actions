@@ -1,7 +1,7 @@
 name: windows-docker
 on: push
 jobs:
-  build:
+  job1:
     name: Hello world action
     runs-on: windows-latest
     env:
